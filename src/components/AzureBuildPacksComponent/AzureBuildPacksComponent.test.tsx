@@ -35,7 +35,7 @@ describe('When DataTable renders', () => {
       expect(screen.getAllByRole('columnheader').length).toBe(3)
   })
   it('display table with data', async()=>{    
-      expect(screen.getByRole('cell', {name:"item.buildpack"})).toBeInTheDocument()
+      expect(screen.getByRole('cell', {name:"item.buildpacks"})).toBeInTheDocument()
       expect(screen.getByRole('cell', {name:"item.buildpack2"})).toBeInTheDocument()
       expect(screen.getByRole('cell', {name:"item.builder"})).toBeInTheDocument()
       expect(screen.getByRole('cell', {name:"item.builder2"})).toBeInTheDocument()
