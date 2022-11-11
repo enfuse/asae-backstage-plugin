@@ -1,6 +1,10 @@
 name: run-tests
 run-name: Triggered by${{ github.actor }} 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+      - tests
 
 jobs:
   test:
