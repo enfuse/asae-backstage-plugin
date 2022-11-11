@@ -3,7 +3,7 @@ run-name: Triggered by${{ github.actor }}
 on:
   push:
     branches:
-      - '*'
+      - tests. main
   pull-requests:
     branches: 
       - main
