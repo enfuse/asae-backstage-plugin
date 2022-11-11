@@ -1,12 +1,7 @@
 name: run-tests
 run-name: Triggered by${{ github.actor }} 
-on:
-  push:
-    branches:
-      - tests. main
-  pull-requests:
-    branches: 
-      - main
+on: [push]
+
 jobs:
   test:
     runs-on: ubuntu-latest
