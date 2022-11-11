@@ -4,8 +4,6 @@ import { Progress } from '@backstage/core-components';
 
 export type DataProps = {
     value:any,
-    loading:boolean,
-    error: any
   }
 export type AsaeConfig = {
     resourceGroupName: string,

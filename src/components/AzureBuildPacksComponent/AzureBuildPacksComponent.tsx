@@ -1,28 +1,27 @@
 import React from 'react';
 import useAsync from 'react-use/lib/useAsync';
-import { TableColumn } from '@backstage/core-components';
+import { TableColumn, Table } from '@backstage/core-components';
 import { withAzureClient,DataProps} from '../common/withAzureClient';
-import { DataTable } from '../common/DataTable';
 import { BuildpacksError } from '../AzureBuildPacksComponent/BuildpacksError';
 import * as Utils from '../../utils/asae-utils'
 import * as Types from '../../types/buildpacks-types'
 
 
-const AzureBuildPacksComponent = (props: DataProps) => {
+export const AzureBuildPacksComponent = ({value}: DataProps) => {
   const title="Supported ASAE Buildpacks"
   const columns: TableColumn[] = [
     { title: 'Buildpack', field: 'buildpack' },
     { title: 'Supported Languages', field: 'languages' },
     { title: 'Builder', field: 'builder' },
   ];
-  const data = props.value.map((item: { buildpack: any; builder: any; languages: any; }) => {
+  const data = value.map((item: { buildpack: any; builder: any; languages: any; }) => {
     return {
       buildpack: item.buildpack,
       builder: item.builder,
       languages: item.languages
     }
   });
-   return <DataTable data={data} columns={columns} title={title} />;
+   return <Table data={data} columns={columns} title={title}  options={{ search: true, paging: false }}   />;
 };
 
 const azureBuildpacksCallback = (client : any, asaeEntityAnotations: any) => {
