@@ -1,0 +1,21 @@
+name: run-tests
+run-name: Triggered by ${{ github.actor }} 
+on: 
+  push:
+    branches:
+      - main
+      - tests
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.19.1
+      - name: Install dependencies 📦
+        run: yarn install
+      - name: Run tests  📦
+        run: yarn test
+      

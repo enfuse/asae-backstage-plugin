@@ -16,7 +16,8 @@ export const withAzureClient = (Component :  React.ComponentType<DataProps> ,
                                 callback : Function) : React.FC  => () => {
     const asaeConfig = Utils.getAsaeConfig()
     const client = Utils.getAsaeClient(asaeConfig)
-    const data = callback(client,asaeConfig);
+    const anotations = Utils.asaeEntityAnnotations()
+    const data = callback(client,anotations);
     
     if (data.loading) 
       return <Progress />;
