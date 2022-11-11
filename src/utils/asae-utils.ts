@@ -47,7 +47,7 @@ export const getAsaeClient  = (asaeConfig : AsaeConfig) : typeof AppPlatformMana
       return client
 }
 
-export const AsaeEntityAnnotations = () => {
+export const asaeEntityAnnotations = () => {
     const {entity} = useEntity();
     return {
          resourceGroup : entity?.metadata?.annotations?.[Constants.ASAE_RESOURCE_GROUP_ANNOTATION],
