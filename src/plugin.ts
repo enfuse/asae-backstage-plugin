@@ -28,7 +28,7 @@ export const AzureConfigServicePage = azureSpringAppsPlugin.provide(
   createRoutableExtension({
     name: 'AzureConfigServicePage',
     component: () =>
-      import('./components/AsaeConfigurationServiceComponent').then(m => m.AsaeConfigServiceWithAzureClient),
+      import('./components/AzureBuildPacksComponent').then(m => m.AsaeBuildPacksWithAzureClient),
     mountPoint: asaeConfigurationRouteRef,
   }),
 );
