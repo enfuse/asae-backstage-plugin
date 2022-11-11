@@ -1,5 +1,5 @@
 name: run-tests
-run-name: Triggered by${{ github.actor }} 
+run-name: Triggered by ${{ github.actor }} 
 on: 
   push:
     branches:
@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: install # will run `yarn install` command
