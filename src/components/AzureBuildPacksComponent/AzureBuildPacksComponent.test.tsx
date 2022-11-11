@@ -9,7 +9,7 @@ describe('When DataTable renders', () => {
   const setup = () => {
 
       const testData = [{
-          buildpack: 'item.buildpacks',
+          buildpack: 'item.buildpack',
           builder: 'item.builder',
           languages: 'item.languages'
         },{
