@@ -8,7 +8,7 @@ Welcome to the azure-spring-apps plugin!
 Download the package into the root of your backstage project
 
 ```sh
-yarn --cwd packages/app add @backstage/plugin-spring-azure-apps
+yarn --cwd packages/app add @enfuse/plugin-spring-azure-apps
 ```
 
 ### Configuration
