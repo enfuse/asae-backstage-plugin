@@ -26,7 +26,7 @@ azureBuildpacks:
     tenantId: <tenant-id>
     clientId: <client-id>
 ```
-Use the extension in your catalog, and place inside the section you want the comopnent to appear on. Make sure to place the component inside a **EntityLayout.Route** in order to create a tab for the section. This is optional, feel free to use the component as it best serves your needs
+Use the extension in your catalog, and place inside the section you want the component to appear on. Make sure to place the component inside a **EntityLayout.Route** in order to create a tab for the section. This is optional, feel free to use the component as it best serves your needs
 
 ``` js
 /*  packages/app/src/components/catalog/EntityPage.tsx  */
