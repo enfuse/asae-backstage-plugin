@@ -1,22 +1,59 @@
 # Azure Spring Apps Enterprise (ASAE) Plugin
 Welcome to the azure-spring-apps plugin!
 
+This handy-dandy plugin will help you bring critical information from your Azure Spring Apps Enterprise cluster to Backstage! 
+
+## Features
+### Current
+- Display all the builders availble to compile your applications source code. 
+![Azure Buildpacks](./docs/buildpacks.png)
+
+### In the works
+- List application instances with general information and deployment status
+- Ability to connect to logs from application instances.
+- View configuration from different built in components (Gateway, Configuration Service, Service Registry)
+
+# Requirements
+1. An [Azure Subscription](https://azure.microsoft.com/en-us/free/)
+2. An [Azure Spring Apps Enterprise Serivce](https://learn.microsoft.com/en-us/azure/spring-apps/) under your subscription
+3. A [Backstage](https://backstage.io/docs/getting-started/) application instance
+
+
 
 
 # Getting started
 
-Download the package into the root of your backstage project
+1. Download the package into the app module of your backstage project
 
 ```sh
 yarn --cwd packages/app add @enfuse/plugin-spring-azure-apps
 ```
 
-### Configuration
-This plug in fetches information using the Azure Rest API, which uses credentials in order to authenticate the calls. You need a tenantId and a clientId from an AD app registration. The plugin will authenticate the user in a popup window. Whoever signs in should have the appropiate permissions to interact with the resources from the Azure.
+2. Use the plugin in your catalog page. The code below shows you how to do place it under the systemPage section, but you're free to do what your heart desires.
 
-You will also need extra information about your resources. (You can leave the buildServiceName as default for now)
+``` js
+/*  packages/app/src/components/catalog/EntityPage.tsx  */
+...
+import { AzureBuildpacksPage,isAsaeBuildpacksBuilderNameAvailable } from '@enfuse/plugin-azure-spring-apps';
+
+const systemPage = (
+...
+    <EntityLayout.Route 
+      if={isAsaeBuildpacksBuilderNameAvailable}
+       path="/azure-buildpacks" title="Azure Buildpacks">
+        <AzureBuildpacksPage></AzureBuildpacksPage>
+    </EntityLayout.Route>
+```
+### Configuration
+3. The plugin fetches information using credentials and general information about where your cluster resides. You need to provide these from your backstage configuration.
+You can get the general information from your overview page in your ASAE clsuter as shown below:
+![ASAE INFO](./docs/asae-info.png)
+ You will also need to provide a tenantId and a clientId from an AD app registration. [(steps to create)](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). The plugin will authenticate the user in a popup window. Whoever signs in should have the appropiate permissions to interact with the resources from the Azure. 
+ 
+ Use the following keys to setup your configuration, you can leave builServiceName as default for now
 
 ```yml
+//app-config.yml or app-config-local.yml
 azureBuildpacks:
   resourceGroupName: <resource-group>
   serviceName: <asae-service-name>
@@ -25,20 +62,5 @@ azureBuildpacks:
   credentials:
     tenantId: <tenant-id>
     clientId: <client-id>
-```
-Use the extension in your catalog, and place inside the section you want the component to appear on. Make sure to place the component inside a **EntityLayout.Route** in order to create a tab for the section. This is optional, feel free to use the component as it best serves your needs
-
-``` js
-/*  packages/app/src/components/catalog/EntityPage.tsx  */
-...
-import { AzureBuildpacksPage,isAsaeBuildpacksBuilderNameAvailable } from '@backstage/plugin-azure-spring-apps';
-
-
-...
-    <EntityLayout.Route 
-      if={isAsaeBuildpacksBuilderNameAvailable}
-       path="/azure-buildpacks" title="Azure Buildpacks">
-        <AzureBuildpacksPage></AzureBuildpacksPage>
-    </EntityLayout.Route>
 ```
 
