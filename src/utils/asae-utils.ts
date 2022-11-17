@@ -2,9 +2,11 @@ const { AppPlatformManagementClient } = require("@azure/arm-appplatform");
 const { InteractiveBrowserCredential } = require("@azure/identity");
 import { useApi, configApiRef } from '@backstage/core-plugin-api';
 import * as Constants from '../constants'
-import { useEntity } from '@backstage/plugin-catalog-react';
 
 type AsaeConfig = {
+    resourceGroup:string
+    serviceName:string
+    buildServiceName:string
     subscriptionId:string
     tenantId:string
     clientId:string
@@ -30,7 +32,10 @@ export const getCompatibleLanguages = (buildpack : string) => {
 export const getAsaeConfig = ()=>{
     const config = useApi(configApiRef);
     const asaeConfig = {
-        subscriptionId: config.getOptionalString(Constants.CONFIG_ASAE_SUBSCRIPTION_ID) ?? 'defaults',
+        resourceGroup: config.getOptionalString(Constants.ASAE_RESOURCE_GROUP) ?? 'NONE_PRIVIDED',
+        serviceName: config.getOptionalString(Constants.ASAE_SERVICE_NAME) ?? 'NONE_PRIVIDED',
+        buildServiceName: config.getOptionalString(Constants.ASAE_BUILD_SERVICE_NAME) ?? 'NONE_PRIVIDED',
+        subscriptionId: config.getOptionalString(Constants.CONFIG_ASAE_SUBSCRIPTION_ID) ?? 'NONE_PRIVIDED',
         tenantId: config.getString(Constants.CONFIG_ASAE_CREDENTIALS_TENTANT_ID),
         clientId: config.getString(Constants.CONFIG_ASAE_CREDENTIALS_CLIENT_ID)
     }
@@ -47,11 +52,3 @@ export const getAsaeClient  = (asaeConfig : AsaeConfig) : typeof AppPlatformMana
       return client
 }
 
-export const asaeEntityAnnotations = () => {
-    const {entity} = useEntity();
-    return {
-         resourceGroup : entity?.metadata?.annotations?.[Constants.ASAE_RESOURCE_GROUP_ANNOTATION],
-         serviceName : entity?.metadata?.annotations?.[Constants.ASAE_SERVICE_NAME_ANNOTATION],
-         buildServiceName : entity?.metadata?.annotations?.[Constants.ASAE_BUILD_SERVICE_NAME_ANNOTATION]
-    }
-}

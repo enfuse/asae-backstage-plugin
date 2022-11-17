@@ -8,7 +8,7 @@ import * as Types from '../../types/buildpacks-types'
 
 
 export const AzureBuildPacksComponent = ({value}: DataProps) => {
-  const title="Supported ASAE Buildpacks"
+  const title="Available Buildpacks"
   const columns: TableColumn[] = [
     { title: 'Buildpack', field: 'buildpack' },
     { title: 'Supported Languages', field: 'languages' },
@@ -24,13 +24,13 @@ export const AzureBuildPacksComponent = ({value}: DataProps) => {
    return <Table data={data} columns={columns} title={title}  options={{ search: true, paging: false }}   />;
 };
 
-const azureBuildpacksCallback = (client : any, asaeEntityAnotations: any) => {
+const azureBuildpacksCallback = (client : any, asaeConfig: any) => {
 
   const { value, loading, error } = useAsync(async (): Promise<Types.SupportedBuildpacks[]> => {
       const builders: Types.AsaeBuilder[]= []
-      const builderIterator = client.buildServiceBuilder.list(asaeEntityAnotations.resourceGroup, 
-        asaeEntityAnotations.serviceName, 
-        asaeEntityAnotations.buildServiceName)
+      const builderIterator = client.buildServiceBuilder.list(asaeConfig.resourceGroup, 
+        asaeConfig.serviceName, 
+        asaeConfig.buildServiceName)
       for await (const val of builderIterator){
         builders.push(val)
       }
@@ -42,7 +42,7 @@ const azureBuildpacksCallback = (client : any, asaeEntityAnotations: any) => {
           buildpacks: buildpacks.flat()
         }
       })
-      const buildPacks1 : Types.SupportedBuildpacks[][] = buildpacksBuilders.map(({name, buildpacks}): Types.SupportedBuildpacks[] => {
+      const buildPacks : Types.SupportedBuildpacks[][] = buildpacksBuilders.map(({name, buildpacks}): Types.SupportedBuildpacks[] => {
        return buildpacks.map((buildpack : Types.AsaeBuildpack) : Types.SupportedBuildpacks => {
           return {
             builder: name,
@@ -51,7 +51,7 @@ const azureBuildpacksCallback = (client : any, asaeEntityAnotations: any) => {
           }
         })
       })
-        return buildPacks1.flat()
+        return buildPacks.flat()
     },[]);
     return { value, loading, error }
 }
