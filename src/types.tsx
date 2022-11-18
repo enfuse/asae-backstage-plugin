@@ -25,3 +25,14 @@ export type SupportedBuildpacks = {
   export type AsaeBuildpack = {
     id:string
   }
+
+  export type AsaeConfig = {
+    tenantId:string
+    clientId:string
+}
+export type EntityAsae = {
+    resourceGroup:string
+    asaeService:string
+    subscriptionId:string
+    buildServiceName:string
+}

@@ -4,7 +4,7 @@ import { TableColumn, Table } from '@backstage/core-components';
 import { withAzureClient,DataProps} from '../common/withAzureClient';
 import { BuildpacksError } from '../AzureBuildPacksComponent/BuildpacksError';
 import * as Utils from '../../utils/asae-utils'
-import * as Types from '../../types/buildpacks-types'
+import * as Types from '../../types'
 
 
 export const AzureBuildPacksComponent = ({value}: DataProps) => {
@@ -24,13 +24,12 @@ export const AzureBuildPacksComponent = ({value}: DataProps) => {
    return <Table data={data} columns={columns} title={title}  options={{ search: true, paging: false }}   />;
 };
 
-const azureBuildpacksCallback = (client : any, asaeConfig: any) => {
-
+const azureBuildpacksCallback = (client : any, entityAsaeInfo: Types.EntityAsae) => {
   const { value, loading, error } = useAsync(async (): Promise<Types.SupportedBuildpacks[]> => {
       const builders: Types.AsaeBuilder[]= []
-      const builderIterator = client.buildServiceBuilder.list(asaeConfig.resourceGroup, 
-        asaeConfig.serviceName, 
-        asaeConfig.buildServiceName)
+      const builderIterator = client.buildServiceBuilder.list(entityAsaeInfo.resourceGroup, 
+        entityAsaeInfo.asaeService, 
+        entityAsaeInfo.buildServiceName)
       for await (const val of builderIterator){
         builders.push(val)
       }
