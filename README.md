@@ -39,22 +39,34 @@ const systemPage = (
     // or wherever your heart desires
 ```
 # Configuration
-1. This plugin requires credential and cluster configuration details. This should be provided in the backstage configuration as shown below:
+1. This plugin requires credential details. This should be provided in the backstage configuration as shown below:
 
 ```yml
 //app-config.yml or app-config-local.yml
 azureBuildpacks:
-  resourceGroupName: <resource-group>
-  serviceName: <asae-service-name>
-  buildServiceName: default // Azure Spring Apps only has a default value for now
-  subscriptionId: <subscription-id>
   credentials:
     tenantId: <tenant-id>
     clientId: <client-id>
 ```
-
-> You can find this information on the Azure Spring App cluster overview page, see screenshot below:
-![ASAE INFO](./docs/asae-info.png)
  
 > You also need to provide a tenantId and a clientId from an AD app registration in order for our app to be able to authenticate users [(guide to generate can be found here)](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). The plugin will authenticate the user in a popup window. Whoever signs in should have the appropriate permissions (READ) on the cluster.
 
+## Entity
+The entity you choose to represent your ASAE cluster shouold include the following anotations
+
+```yml
+//asae-entity.yml 
+...
+metadata:
+  name: asae-entity-sample
+  annotations:
+    dev.azure.com/resource-group: <resource-group>
+    dev.azure.com/service-name: <asae-service-name>
+    dev.azure.com/build-service-name: default // this can only be default for now
+    dev.azure.com/subscription-id: <subscription-id>
+```
+
+> You can find this information on the Azure Spring App cluster overview page, see screenshot below:
+![ASAE INFO](./docs/asae-info.png)
+
+Build service name refers to the buils service that provided the builder, which is the Tanzu Build Service in ASAE. 

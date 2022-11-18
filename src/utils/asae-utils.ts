@@ -2,15 +2,9 @@ const { AppPlatformManagementClient } = require("@azure/arm-appplatform");
 const { InteractiveBrowserCredential } = require("@azure/identity");
 import { useApi, configApiRef } from '@backstage/core-plugin-api';
 import * as Constants from '../constants'
+import {useEntity} from '@backstage/plugin-catalog-react'
+import {AsaeConfig, EntityAsae} from '../types'
 
-type AsaeConfig = {
-    resourceGroup:string
-    serviceName:string
-    buildServiceName:string
-    subscriptionId:string
-    tenantId:string
-    clientId:string
-}
 export const getCompatibleLanguages = (buildpack : string) => {
 
     switch(buildpack){
@@ -29,26 +23,31 @@ export const getCompatibleLanguages = (buildpack : string) => {
     }
 }
 
-export const getAsaeConfig = ()=>{
+export const getAsaeConfig  = ():AsaeConfig => {
     const config = useApi(configApiRef);
     const asaeConfig = {
-        resourceGroup: config.getOptionalString(Constants.ASAE_RESOURCE_GROUP) ?? 'NONE_PRIVIDED',
-        serviceName: config.getOptionalString(Constants.ASAE_SERVICE_NAME) ?? 'NONE_PRIVIDED',
-        buildServiceName: config.getOptionalString(Constants.ASAE_BUILD_SERVICE_NAME) ?? 'NONE_PRIVIDED',
-        subscriptionId: config.getOptionalString(Constants.CONFIG_ASAE_SUBSCRIPTION_ID) ?? 'NONE_PRIVIDED',
         tenantId: config.getString(Constants.CONFIG_ASAE_CREDENTIALS_TENTANT_ID),
         clientId: config.getString(Constants.CONFIG_ASAE_CREDENTIALS_CLIENT_ID)
-    }
+    } as AsaeConfig
     return asaeConfig
 }
 
-export const getAsaeClient  = (asaeConfig : AsaeConfig) : typeof AppPlatformManagementClient => {
+export const getAsaeClient  = (asaeConfig : AsaeConfig, anotations:EntityAsae) : typeof AppPlatformManagementClient => {
     const credential = new InteractiveBrowserCredential({
         tenantId: asaeConfig.tenantId,
         clientId: asaeConfig.clientId
       });
-      const client = new AppPlatformManagementClient(credential, asaeConfig.subscriptionId);
-      
+      const client = new AppPlatformManagementClient(credential, anotations.subscriptionId);
       return client
 }
 
+export const getAsaeEntityInfo = ():EntityAsae=>{
+    const {entity} = useEntity()
+    const entiytyAsae = {
+     resourceGroup : entity?.metadata?.annotations?.[Constants.ASAE_RESOURCE_GROUP]??'MISSING', 
+     asaeService : entity?.metadata?.annotations?.[Constants.ASAE_SERVICE_NAME]??'MISSING',
+     buildServiceName : entity?.metadata?.annotations?.[Constants.ASAE_BUILD_SERVICE_NAME]??'default',
+     subscriptionId : entity?.metadata?.annotations?.[Constants.CONFIG_ASAE_SUBSCRIPTION_ID]??'MISSING'
+    } as EntityAsae
+    return entiytyAsae
+}
