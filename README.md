@@ -23,6 +23,9 @@ In order to use the Azure Spring Application plugin, you must have a working Azu
 yarn --cwd packages/app add @enfuse/plugin-azure-spring-apps
 ```
 
+>#### Warning
+>This installation method fails and leaves the application in a failing state. We found adding `@enfuse/plugin-azure-spring-apps` in the dependecies section manually and running `yarn install` adds the package without a problem
+
 2. Import and use the plugin in your catalog page. Example code below:
 
 ``` js
