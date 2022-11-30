@@ -21,7 +21,7 @@ export const AzureBuildPacksComponent = ({value}: DataProps) => {
       languages: item.languages
     }
   });
-   return <Table data={data} columns={columns} title={title}  options={{ search: true, paging: false }}   />;
+   return <Table data={data} columns={columns} title={title}  options={{ search: true, paging: false }}/>;
 };
 
 const azureBuildpacksCallback = (client : any, entityAsaeInfo: Types.EntityAsae) => {
