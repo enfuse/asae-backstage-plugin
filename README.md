@@ -38,9 +38,6 @@ In order to use the Azure Spring Application plugin, you must have a working Azu
 yarn --cwd packages/app add @enfuse/plugin-azure-spring-apps
 ```
 
->#### Warning
->This installation method fails and leaves the application in a failing state. We found adding `@enfuse/plugin-azure-spring-apps` in the dependecies section manually and running `yarn install` adds the package without a problem
-
 2. Import and use the plugin in your catalog page. Example code below:
 
 ``` js
@@ -79,6 +76,7 @@ azureBuildpacks:
 ## Entity
 The entity you choose to represent your ASAE cluster shouold include the following anotations
 
+1. Create the entity using this template:
 ```yml
 //asae-entity.yml 
 ...
@@ -89,6 +87,21 @@ metadata:
     dev.azure.com/service-name: <asae-service-name>
     dev.azure.com/build-service-name: default // this can only be default for now
     dev.azure.com/subscription-id: <subscription-id>
+```
+
+2. Point to the entity in your application catalog file. E.g.:
+```yaml
+catalog:
+  // [...]
+
+  locations:
+    // [...]
+
+    // ASAE entities
+    - type: file
+      target: ../../examples/asae-entity.yaml
+      rules:
+        - allow: [ System ]
 ```
 
 > You can find this information on the Azure Spring App cluster overview page, see screenshot below:
