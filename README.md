@@ -1,7 +1,7 @@
 # Azure Spring Apps (ASAE) Plugin
 The Azure Spring App plugin displays status and configuration information about your Azure Spring Apps  cluster to Backstage. 
 
-![ASAE Apps list](./docs/asae-app-list.png)
+![ASAE Apps list](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/asae-app-list.png?raw=true)
 
 > Plugin has only been tested using Enterprise tier
 
@@ -15,7 +15,7 @@ The Azure Spring App plugin displays status and configuration information about 
 * Buildpacks
   * List all build packs available on cluster for use
   * Supported languages/frameworks
-![Azure Buildpacks](./docs/buildpacks.png)
+![Azure Buildpacks](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/buildpacks.png?raw=true)
 
 * App List which displays:
   * list of apps
@@ -105,6 +105,6 @@ catalog:
 ```
 
 > You can find this information on the Azure Spring App cluster overview page, see screenshot below:
-![ASAE INFO](./docs/asae-info.png)
+![ASAE INFO](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/asae-info.png?raw=true)
 
 Build service name refers to the buils service that provided the builder, which is the Tanzu Build Service in ASAE. 
