@@ -1,10 +1,16 @@
-const { AppPlatformManagementClient } = require("@azure/arm-appplatform");
-const { InteractiveBrowserCredential } = require("@azure/identity");
+import React from 'react'
+import { AppPlatformManagementClient } from "@azure/arm-appplatform";
+import {InteractiveBrowserCredential} from '@azure/identity'
 import { useApi, configApiRef } from '@backstage/core-plugin-api';
 import * as Constants from '../constants'
 import {useEntity} from '@backstage/plugin-catalog-react'
 import {AsaeConfig, EntityAsae} from '../types'
-
+import {
+      StatusError,
+      StatusOK,
+      StatusPending,
+      StatusRunning
+    } from '@backstage/core-components';
 export const getCompatibleLanguages = (buildpack : string) => {
 
     switch(buildpack){
@@ -32,7 +38,7 @@ export const getAsaeConfig  = ():AsaeConfig => {
     return asaeConfig
 }
 
-export const getAsaeClient  = (asaeConfig : AsaeConfig, anotations:EntityAsae) : typeof AppPlatformManagementClient => {
+export const getAsaeClient  = (asaeConfig : AsaeConfig, anotations:EntityAsae) : AppPlatformManagementClient => {
     const credential = new InteractiveBrowserCredential({
         tenantId: asaeConfig.tenantId,
         clientId: asaeConfig.clientId
@@ -51,3 +57,16 @@ export const getAsaeEntityInfo = ():EntityAsae=>{
     } as EntityAsae
     return entiytyAsae
 }
+
+export const getStatusComponent = (status:string|undefined) : JSX.Element =>  {
+    switch(status){
+        case 'Succeeded':
+            return <StatusOK>{status} </StatusOK>
+        case 'Updating':
+            return <StatusRunning>{status} </StatusRunning>
+        case 'Failed':
+            return <StatusError>{status}</StatusError>
+    }
+    return <StatusPending>{status}</StatusPending>
+}
+

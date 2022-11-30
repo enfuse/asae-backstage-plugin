@@ -11,7 +11,7 @@ export type AsaeConfig = {
     buildServiceName: string,
 }
 
-export const withAzureClient = (Component :  React.ComponentType<DataProps> ,
+export const withAzureClient  = <T,> (Component :  React.ComponentType<T> ,
                                 ErrorComponent :  React.ComponentType<any> ,
                                 callback : Function) : React.FC  => () => {
     const asaeConfig = Utils.getAsaeConfig()
@@ -23,5 +23,5 @@ export const withAzureClient = (Component :  React.ComponentType<DataProps> ,
     else if (data.error) 
       return <ErrorComponent error={data.error}/>
     
-    return <Component {...data as DataProps}/>
+    return <Component {...data as T}/>
 }

@@ -1,13 +1,28 @@
 # Azure Spring Apps (ASAE) Plugin
-The Azure Spring App plugin displays status and configuration information about your Azure Spring Apps  cluster to Backstage. Currently the plugin only shows information around enabled build-packs. 
+The Azure Spring App plugin displays status and configuration information about your Azure Spring Apps  cluster to Backstage. 
 
-![Azure Buildpacks](./docs/buildpacks.png)
+![ASAE Apps list](./docs/asae-app-list.png)
+
 > Plugin has only been tested using Enterprise tier
 
 # Releases
+## v1.1.0 -  CURRENT
+- App list tab describes all apps on cluster including the identity, routing, storage and security information
 ## v1.0.0 
-- Display all the builders availble to compile your applications source code. 
+- Display all the builders available to compile your applications source code. 
 
+# Features
+* Buildpacks
+  * List all build packs available on cluster for use
+  * Supported languages/frameworks
+![Azure Buildpacks](./docs/buildpacks.png)
+
+* App List which displays:
+  * list of apps
+  * route and endpoints
+  * HTTPS/Public/end-to-end TLS status
+  * Temporary / Permanent Storage Location
+  * Identity information (if applicable)
 # Requirements
 In order to use the Azure Spring Application plugin, you must have a working Azure Spring Application cluster.
 
@@ -31,14 +46,21 @@ yarn --cwd packages/app add @enfuse/plugin-azure-spring-apps
 ``` js
 /*  packages/app/src/components/catalog/EntityPage.tsx  */
 ...
-import { AzureBuildpacksPage } from '@enfuse/plugin-azure-spring-apps';
+import { AzureBuildpacksPage , AsaeAppsListPage} from '@enfuse/plugin-azure-spring-apps';
 
 const systemPage = (
 ...
+    //Buildpacks
     <EntityLayout.Route 
        path="/azure-buildpacks" title="Azure Buildpacks">
         <AzureBuildpacksPage></AzureBuildpacksPage>
     </EntityLayout.Route>
+
+    //Apps List
+    <EntityLayout.Route 
+      path="/asae-apps-list" title="App List">
+        <AsaeAppsListPage></AsaeAppsListPage>
+     </EntityLayout.Route>
     // or wherever your heart desires
 ```
 # Configuration
