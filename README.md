@@ -1,7 +1,7 @@
 # Azure Spring Apps (ASAE) Plugin
 The Azure Spring App plugin displays status and configuration information about your Azure Spring Apps  cluster to Backstage. 
 
-![ASAE Apps list](./docs/asae-app-list.png)
+![ASAE Apps list](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/asae-app-list.png?raw=true)
 
 > Plugin has only been tested using Enterprise tier
 
@@ -15,7 +15,7 @@ The Azure Spring App plugin displays status and configuration information about 
 * Buildpacks
   * List all build packs available on cluster for use
   * Supported languages/frameworks
-![Azure Buildpacks](./docs/buildpacks.png)
+![Azure Buildpacks](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/buildpacks.png?raw=true)
 
 * App List which displays:
   * list of apps
@@ -37,9 +37,6 @@ In order to use the Azure Spring Application plugin, you must have a working Azu
 ```sh
 yarn --cwd packages/app add @enfuse/plugin-azure-spring-apps
 ```
-
->#### Warning
->This installation method fails and leaves the application in a failing state. We found adding `@enfuse/plugin-azure-spring-apps` in the dependecies section manually and running `yarn install` adds the package without a problem
 
 2. Import and use the plugin in your catalog page. Example code below:
 
@@ -79,6 +76,7 @@ azureBuildpacks:
 ## Entity
 The entity you choose to represent your ASAE cluster shouold include the following anotations
 
+1. Create the entity using this template:
 ```yml
 //asae-entity.yml 
 ...
@@ -91,7 +89,22 @@ metadata:
     dev.azure.com/subscription-id: <subscription-id>
 ```
 
+2. Point to the entity in your application catalog file. E.g.:
+```yaml
+catalog:
+  // [...]
+
+  locations:
+    // [...]
+
+    // ASAE entities
+    - type: file
+      target: ../../examples/asae-entity.yaml
+      rules:
+        - allow: [ System ]
+```
+
 > You can find this information on the Azure Spring App cluster overview page, see screenshot below:
-![ASAE INFO](./docs/asae-info.png)
+![ASAE INFO](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/asae-info.png?raw=true)
 
 Build service name refers to the buils service that provided the builder, which is the Tanzu Build Service in ASAE. 
