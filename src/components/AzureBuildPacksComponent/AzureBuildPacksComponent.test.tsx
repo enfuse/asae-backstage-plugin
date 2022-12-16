@@ -24,10 +24,6 @@ describe('When DataTable renders', () => {
   beforeEach(()=>{
     setup()
   })
-  it('should match previous snapshot', async() => {
-     
-      expect(rendered).toMatchSnapshot();
-  })
   it('should display a heading', async ()=>{
       expect(screen.getByRole('heading')).toBeInTheDocument()
   })
