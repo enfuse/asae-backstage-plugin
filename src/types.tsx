@@ -1,3 +1,5 @@
+import { AppResourceProperties, ManagedIdentityProperties } from "@azure/arm-appplatform";
+
 export type SupportedBuildpacks = {
     buildpack: string;
     builder: string
@@ -35,4 +37,15 @@ export type EntityAsae = {
     asaeService:string
     subscriptionId:string
     buildServiceName:string
+}
+
+export type AsaeApp = {
+  id:string,
+  appName:string,
+  location:string,
+  provisioningState:JSX.Element,
+  identity:ManagedIdentityProperties,
+  properties:AppResourceProperties,
+  state: string,
+  endpoints: []
 }

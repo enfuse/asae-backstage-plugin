@@ -1,23 +1,24 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import {queryByTestId} from '@testing-library/dom'
+import { fireEvent, render, screen } from '@testing-library/react';
 import { AsaeAppsList,asaeAppListCallback } from './AsaeAppList';
-
+import userEvent from '@testing-library/user-event'
 describe('When DataTable renders', () => {
   let rendered : HTMLElement | undefined = undefined 
 
   const setup = () => {
 
       const testData = [{
-        appName: 'item.appname-1',
-        provisioningState: 'item.provisioningState-1',
-        location: 'item.location-1',
-        identity: {tenantId: 'tenantId-test-1', clientId: "clientId-test-1"}
+        appName: 'candidate-service-dev',
+        provisioningState: 'Successful',
+        location: 'us-west2',
+        identity: {tenantId: 'tenantId-test-1', clientId: 'clientId-test-1'},
+        id: 1
       },{
-        appName: 'item.appname-2',
-        provisioningState: 'item.provisioningState-2',
-        location: 'item.location-2',
-        identity: {tenantId: 'tenantId-test-2', clientId: "clientId-test-2"}
+        appName: 'candidate-portal-dev',
+        provisioningState: 'Pending',
+        location: 'us-east1',
+        identity: {tenantId: '', clientId: ''},
+        id: 2
         },
       ]
 
@@ -30,16 +31,24 @@ describe('When DataTable renders', () => {
 
   it('should display 3 column headers', async() => {
       expect(screen.getAllByRole('columnheader').length).toBe(3)
+      // expect(screen.getAllByRole('columnheader')[0]).toBe('test')
   })
   it('display table with data', async()=>{    
-      expect(screen.getByRole('cell', {name:"item.appname-1"})).toBeInTheDocument()
-      expect(screen.getByRole('cell', {name:"item.appname-2"})).toBeInTheDocument()
-      expect(screen.getByRole('cell', {name:"item.provisioningState-1"})).toBeInTheDocument()
-      expect(screen.getByRole('cell', {name:"item.provisioningState-2"})).toBeInTheDocument()
-      expect(screen.getByRole('cell', {name:"item.location-1"})).toBeInTheDocument()
-      expect(screen.getByRole('cell', {name:"item.location-2"})).toBeInTheDocument()
+      expect(screen.getByRole('cell', {name:"candidate-service-dev"})).toBeInTheDocument()
+      expect(screen.getByRole('cell', {name:"candidate-portal-dev"})).toBeInTheDocument()
+      expect(screen.getByRole('cell', {name:"Successful"})).toBeInTheDocument()
+      expect(screen.getByRole('cell', {name:"Pending"})).toBeInTheDocument()
+      expect(screen.getByRole('cell', {name:"us-west2"})).toBeInTheDocument()
+      expect(screen.getByRole('cell', {name:"us-east1"})).toBeInTheDocument()
   })
-  it('should match previous snapshot', async() => {
-    expect(rendered).toMatchSnapshot();
-})
+  it ('should display Identity information', ()=>{
+    // TODO figure out how to test
+    // fireEvent.click(screen.getAllByRole('row')[1])
+    userEvent.click(screen.getAllByRole('row')[1])
+    console.log(screen.getAllByRole('row')[1].outerHTML)
+    console.log(screen.debug())
+
+    expect(screen.getByRole('identity-data')).toBeInTheDocument()
+  })
+
 })

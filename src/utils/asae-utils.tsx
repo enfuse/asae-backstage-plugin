@@ -11,6 +11,7 @@ import {
       StatusPending,
       StatusRunning
     } from '@backstage/core-components';
+import axios from 'axios'
 export const getCompatibleLanguages = (buildpack : string) => {
 
     switch(buildpack){
@@ -70,3 +71,14 @@ export const getStatusComponent = (status:string|undefined) : JSX.Element =>  {
     return <StatusPending>{status}</StatusPending>
 }
 
+export const  getApplicationState = async (url:string) =>{
+    let status = ''
+    try{
+        const response = await axios.get(url.concat('/actuator/health'))
+        status = response?.data?.status
+    }
+    catch(e:any){
+        status = 'Status not found'
+    }
+    return status
+}

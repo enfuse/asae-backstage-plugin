@@ -6,4 +6,7 @@ export const rootRouteRef = createRouteRef({
 export const asaeAppsListtRouteRef = createRouteRef({
   id: 'asae-apps-list',
 });
+export const asaeExternalConfigurationRouteRef = createRouteRef({
+  id: 'asae-external-config',
+});
 

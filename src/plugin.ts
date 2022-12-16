@@ -1,5 +1,7 @@
 import { createPlugin, createRoutableExtension } from '@backstage/core-plugin-api';
-import { rootRouteRef,asaeAppsListtRouteRef } from './routes';
+import { rootRouteRef,
+        asaeAppsListtRouteRef,
+        asaeExternalConfigurationRouteRef } from './routes';
 
 
 // export const isAsaeBuildpacksBuilderNameAvailable = () => {
@@ -29,5 +31,15 @@ export const AsaeAppsListPage = azureSpringAppsPlugin.provide(
     mountPoint: asaeAppsListtRouteRef,
   }),
 );
+
+export const ExternalConfigurationComponent =  azureSpringAppsPlugin.provide(
+  createRoutableExtension({
+    name: 'AsaeExternalConfiguration',
+    component: () => 
+      import ('./components/ExternalConfiguration/AsaeExternalConfiguration')
+            .then(m => m.AsaeExternalConfiguration),
+    mountPoint: asaeExternalConfigurationRouteRef
+  })
+)
 
 
