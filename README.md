@@ -31,11 +31,16 @@ In order to use the Azure Spring Application plugin, you must have a working Azu
 3. A [Backstage](https://backstage.io/docs/getting-started/) application instance
 
 # Installation
+Follow the installation process below. Using `yarn add` causes the plugin to fail
 
-1. Install the plugin with `yarn` in the root of your Backstage directory
+1. Add the dependency to your package.json in packages/app
 
+```json
+    "@enfuse/plugin-azure-spring-apps": "^1.1.3"
+```
+and run 
 ```sh
-yarn --cwd packages/app add @enfuse/plugin-azure-spring-apps
+    yarn install
 ```
 
 2. Import and use the plugin in your catalog page. Example code below:
