@@ -3,9 +3,9 @@ import { Box, Chip, Collapse, Paper } from '@mui/material'
 import { AsaeApp } from '../../types'
 import React from 'react'
 import { useStyles } from "../common/styles";
+import { DataProps } from '../common/withAzureClient';
 
-export const  AppEndpoints = ( props : {asaeApp : AsaeApp}) =>{
-    const {asaeApp} = props
+export const  AppEndpoints = ( {asaeApp}:any) =>{
     return (
       <Paper elevation={6} sx={{background: asaeApp.endpoints.length > 0? 'default':'e6e8e6'}} >
         <Box sx={{ padding: 1, paddingLeft:4 }}>
