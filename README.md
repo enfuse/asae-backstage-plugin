@@ -6,7 +6,11 @@ The Azure Spring App plugin displays status and configuration information about 
 > Plugin has only been tested using Enterprise tier
 
 # Releases
-## v1.1.0 -  CURRENT
+
+## v2.0.1 -  
+- App list tab now includes a view to see endpoints exposed by Spring applications deployed to ASAE (requires actuator configuration)
+-External Configuration view
+## v1.1.1 -  
 - App list tab describes all apps on cluster including the identity, routing, storage and security information
 ## v1.0.0 
 - Display all the builders available to compile your applications source code. 
