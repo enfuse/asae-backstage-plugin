@@ -1320,7 +1320,7 @@
     yaml "^2.0.0"
     yup "^0.32.9"
 
-"@backstage/config@^1.0.2", "@backstage/config@^1.0.3", "@backstage/config@^1.0.4":
+"@backstage/config@^1.0.2", "@backstage/config@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@backstage/config/-/config-1.0.4.tgz#70197c4e31cfb9a8242b14a8b0a8551e59361381"
   integrity sha512-CAYPXEMLLrUDUIyLKvj0XnYaRP0uwmHKsMgr2lDljgMbNbJGLk9Nr0KgukRmVXf7URdEII6k0LKTOaaCmwQ43A==
@@ -1340,49 +1340,6 @@
     "@types/prop-types" "^15.7.3"
     prop-types "^15.7.2"
     react-use "^17.2.4"
-    zen-observable "^0.8.15"
-    zod "^3.11.6"
-
-"@backstage/core-components@^0.11.1":
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/@backstage/core-components/-/core-components-0.11.2.tgz#772a3f3e6b7a765a8f619e9e2b93ebeab5a7288a"
-  integrity sha512-ydWRl3rOPxLGYhKojBEW7Z2ImMeG+eN0JIMaYwbsCgxE80zIewtEDTLlmd2jbTWnmP6gKftytt/NAlGM1qtu0g==
-  dependencies:
-    "@backstage/config" "^1.0.3"
-    "@backstage/core-plugin-api" "^1.0.7"
-    "@backstage/errors" "^1.1.2"
-    "@backstage/theme" "^0.2.16"
-    "@backstage/version-bridge" "^1.0.1"
-    "@material-table/core" "^3.1.0"
-    "@material-ui/core" "^4.12.2"
-    "@material-ui/icons" "^4.9.1"
-    "@material-ui/lab" "4.0.0-alpha.57"
-    "@react-hookz/web" "^15.0.0"
-    "@types/react-sparklines" "^1.7.0"
-    "@types/react-text-truncate" "^0.14.0"
-    ansi-regex "^6.0.1"
-    classnames "^2.2.6"
-    d3-selection "^3.0.0"
-    d3-shape "^3.0.0"
-    d3-zoom "^3.0.0"
-    dagre "^0.8.5"
-    history "^5.0.0"
-    immer "^9.0.1"
-    lodash "^4.17.21"
-    pluralize "^8.0.0"
-    prop-types "^15.7.2"
-    qs "^6.9.4"
-    rc-progress "3.4.0"
-    react-helmet "6.1.0"
-    react-hook-form "^7.12.2"
-    react-markdown "^8.0.0"
-    react-sparklines "^1.7.0"
-    react-syntax-highlighter "^15.4.5"
-    react-text-truncate "^0.19.0"
-    react-use "^17.3.2"
-    react-virtualized-auto-sizer "^1.0.6"
-    react-window "^1.8.6"
-    remark-gfm "^3.0.1"
     zen-observable "^0.8.15"
     zod "^3.11.6"
 
@@ -1429,7 +1386,7 @@
     zen-observable "^0.8.15"
     zod "^3.11.6"
 
-"@backstage/core-plugin-api@^1.0.6", "@backstage/core-plugin-api@^1.0.7", "@backstage/core-plugin-api@^1.1.0":
+"@backstage/core-plugin-api@^1.0.6", "@backstage/core-plugin-api@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@backstage/core-plugin-api/-/core-plugin-api-1.1.0.tgz#eceb5382ddec407accd37d6ac43473a76eb6010b"
   integrity sha512-m/LzmCb5wjb98zyFu5xD/e+JZzzaHU4iI2dBfk0LVCiN4KhodH6QcqpDveX+5aImivW1eJULwNQbquWRd8Avmw==
@@ -1463,7 +1420,7 @@
     react-use "^17.2.4"
     zen-observable "^0.8.15"
 
-"@backstage/errors@^1.1.1", "@backstage/errors@^1.1.2", "@backstage/errors@^1.1.3":
+"@backstage/errors@^1.1.1", "@backstage/errors@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@backstage/errors/-/errors-1.1.3.tgz#0c61b654a51b90d5224d70c16680215679ec11a0"
   integrity sha512-KgNUELpGZ0BHqHr9Sku7iPTMc/huBurPdRMGUWC6TD6lwzHJtN1WWLJL0lzJyDprXCKQLUogIJxt8auS2bdgNw==
@@ -1609,7 +1566,7 @@
   resolved "https://registry.yarnpkg.com/@backstage/types/-/types-1.0.1.tgz#9a64515ca5683d7f4f1c9a36c7ef84cab1af7c09"
   integrity sha512-iSaeCzTczIWQ/Kq1gk9HP3U62jEnCj6O/AfcJv0ahyeGdTjlL9og6lgeL/FClOauBWwFFcqF+a8eehdCfFmfng==
 
-"@backstage/version-bridge@^1.0.1", "@backstage/version-bridge@^1.0.2":
+"@backstage/version-bridge@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@backstage/version-bridge/-/version-bridge-1.0.2.tgz#18cda0fb347ee3f47b1a99a6ceb39856a799f9ba"
   integrity sha512-R4SCYi4JAgFmW8zu4G7lXp+SlkPD9bFHx4Sw7ThovxdWtFaE82sAGkVzvaSEEksfrPn3mj+FKt6Hh9D9N/aKHA==
@@ -2563,6 +2520,11 @@
   integrity sha512-AsmqeZDg22JnpQS1hGIjLbue4LPmcsgyoPzgmKt6WDeqIUWFL20cgowiGBMFNLvL5Cc9XdusVY720S+CpLyT4Q==
   dependencies:
     "@react-hookz/deep-equal" "^1.0.3"
+
+"@remix-run/router@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.1.0.tgz#b48db8148c8a888e50580a8152b6f68161c49406"
+  integrity sha512-rGl+jH/7x1KBCQScz9p54p0dtPLNeKGb3e0wD2H5/oZj41bwQUnXdzbj2TbUAFhvD7cp9EyEQA4dEgpUFa1O7Q==
 
 "@rollup/plugin-commonjs@^22.0.0":
   version "22.0.2"
@@ -4646,7 +4608,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.6:
+classnames@^2.2.6, classnames@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
@@ -11174,6 +11136,21 @@ react-refresh@^0.14.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.14.0.tgz#4e02825378a5f227079554d4284889354e5f553e"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
+react-router-dom@^6.3.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.5.0.tgz#3970bdcaa7c710a6e0b478a833ba0b4b8ae61a6f"
+  integrity sha512-/XzRc5fq80gW1ctiIGilyKFZC/j4kfe75uivMsTChFbkvrK4ZrF3P3cGIc1f/SSkQ4JiJozPrf+AwUHHWVehVg==
+  dependencies:
+    "@remix-run/router" "1.1.0"
+    react-router "6.5.0"
+
+react-router@6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.5.0.tgz#b53f15543a60750c925609d2e38037ac5aed6dd3"
+  integrity sha512-fqqUSU0NC0tSX0sZbyuxzuAzvGqbjiZItBQnyicWlOUmzhAU8YuLgRbaCL2hf3sJdtRy4LP/WBrWtARkMvdGPQ==
+  dependencies:
+    "@remix-run/router" "1.1.0"
+
 react-side-effect@^2.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.2.tgz#dc6345b9e8f9906dc2eeb68700b615e0b4fe752a"
@@ -12690,11 +12667,6 @@ ts-node@^10.2.1:
     make-error "^1.1.1"
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
-
-tsc@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/tsc/-/tsc-2.0.4.tgz#5f6499146abea5dca4420b451fa4f2f9345238f5"
-  integrity sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==
 
 tsconfig-paths@^3.14.1:
   version "3.14.1"
