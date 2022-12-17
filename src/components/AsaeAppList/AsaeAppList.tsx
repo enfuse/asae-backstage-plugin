@@ -1,5 +1,4 @@
 import React from 'react'
-// import { TableColumn, Table } from '@backstage/core-components';
 import useAsync from 'react-use/lib/useAsync';
 import { AppPlatformManagementClient,AppResource} from "@azure/arm-appplatform";
 
@@ -18,7 +17,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import {StatusError,StatusOK } from '@backstage/core-components';
+import {StatusError,StatusOK } from '../common/Status';
 import Paper from '@mui/material/Paper';
 import { useStyles } from "../common/styles";
 import { Grid } from '@material-ui/core';
@@ -140,15 +139,16 @@ function Row( props: {asaeApp: AsaeApp} ) {
 }
 
 export const AsaeAppsList =({value}:DataProps) =>{
+  const classes = useStyles()
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table" >
         <TableHead>
           <TableRow>
-            <TableCell>App Name</TableCell>
-            <TableCell> App State</TableCell>
-            <TableCell >Provisioning State</TableCell>
-            <TableCell >Location</TableCell>
+            <TableCell className={classes.tableCell}>App Name</TableCell>
+            <TableCell className={classes.tableCell}> App State</TableCell>
+            <TableCell className={classes.tableCell} >Provisioning State</TableCell>
+            <TableCell className={classes.tableCell} >Location</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

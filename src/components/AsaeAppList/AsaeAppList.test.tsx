@@ -1,6 +1,6 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { AsaeAppsList,asaeAppListCallback } from './AsaeAppList';
+import { render, screen } from '@testing-library/react';
+import { AsaeAppsList } from './AsaeAppList';
 import userEvent from '@testing-library/user-event'
 describe('When DataTable renders', () => {
   let rendered : HTMLElement | undefined = undefined 
