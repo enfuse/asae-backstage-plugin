@@ -1,7 +1,6 @@
 # Azure Spring Apps (ASAE) Plugin
 The Azure Spring App plugin displays status and configuration information about your Azure Spring Apps  cluster to Backstage. 
 
-![ASAE Apps list](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/asae-app-list.png?raw=true)
 
 > Plugin has only been tested using Enterprise tier
 
@@ -19,6 +18,7 @@ The Azure Spring App plugin displays status and configuration information about 
 * Buildpacks
   * List all build packs available on cluster for use
   * Supported languages/frameworks
+
 ![Azure Buildpacks](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/buildpacks.png?raw=true)
 
 * App List which displays:
@@ -27,6 +27,15 @@ The Azure Spring App plugin displays status and configuration information about 
   * HTTPS/Public/end-to-end TLS status
   * Temporary / Permanent Storage Location
   * Identity information (if applicable)
+
+![ASAE Apps list](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/asae-app-list.png?raw=true)
+
+* External Configuration
+  * Instance status information (provisioning state, # insances, memory, cpu)
+  * List of repos 
+  * Repos' name, patterns, label, Uri
+
+![Azure External Configuration](https://raw.githubusercontent.com/enfuse/asae-backstage-plugin/main/docs/external-config.png?raw=true)
 # Requirements
 In order to use the Azure Spring Application plugin, you must have a working Azure Spring Application cluster.
 
