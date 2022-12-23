@@ -27,8 +27,8 @@ export const AzureBuildPacksComponent = ({value}: DataProps) => {
         <TableHead>
           <TableRow>
             <TableCell className={classes.tableCell} >Buildpack</TableCell>
-            <TableCell className={classes.tableCell} >Supported Languages</TableCell>
             <TableCell className={classes.tableCell} >Builder</TableCell>
+            <TableCell className={classes.tableCell} >Supported Languages</TableCell>
           </TableRow>
         </TableHead>
         
